@@ -52,7 +52,7 @@ class ForgotPasswordController extends Controller
         ];
     
         try {
-            FacadesMail::to("lipsita@eatechpvtltd.com")->send(new ForgotPasswordMail($mailData));
+            FacadesMail::to("lipsitap@eatechpvtltd.com")->send(new ForgotPasswordMail($mailData));
             
             // Generate a hashed user ID
             $hashedUserId = encrypt($user->id); // Combine ID with timestamp for uniqueness
