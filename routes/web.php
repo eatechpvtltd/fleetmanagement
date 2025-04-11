@@ -36,8 +36,6 @@ Route::group(['prefix' => 'api'], function () {
 });
 
 
-
-
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotForm'])->name('password.request');
 Route::post('/forgot-password-post', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
 Route::get('/confirm-password', [ForgotPasswordController::class, 'showConfirmForm'])->name('confirm.request');

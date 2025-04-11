@@ -52,12 +52,12 @@ class ForgotPasswordController extends Controller
         ];
     
         try {
-            FacadesMail::to("lipsitap@eatechpvtltd.com")->send(new ForgotPasswordMail($mailData));
+            FacadesMail::to($request->email)->send(new ForgotPasswordMail($mailData));
             
             // Generate a hashed user ID
             $hashedUserId = encrypt($user->id); // Combine ID with timestamp for uniqueness
-            return redirect()->route('confirm.request', [
-                'hashed_id' => $hashedUserId,
+            return redirect()->route('password.request', [
+                // 'hashed_id' => $hashedUserId,
                 'success' => true,
                 'message' => 'Password reset OTP has been sent to your email.',
             ]);
@@ -134,25 +134,12 @@ class ForgotPasswordController extends Controller
         $user->reset_otp_expires_at = null;
         $user->save();
 
-        // Verify OTP and expiration
-        // if ($user->reset_otp !== $request->otp || now()->greaterThan($user->reset_otp_expires_at)) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'message' => 'Invalid or expired OTP.',
-        //     ], 400);
-        // }
-
-        // Update the password and clear OTP fields
-        // $user->update([
-        //     'password' => Hash::make($request->password),
-        //     'reset_otp' => null,
-        //     'reset_otp_expires_at' => null,
-        // ]);
-
-        // Return JSON success response
-        return response()->json([
-            'success' => true,
+        // sendResetLink 
+        redirect()->route('confirm.request', [
+            // 'hashed_id' => $request->hashed_id,
+            'success' => 2,
             'message' => 'Password reset successfully. Please log in.',
         ], 200);
+
     }
 }

@@ -79,6 +79,11 @@
     <!-- Login Form -->
     <div class="login-form">
       <h2 class="form-title">Reset Password</h2>
+      @if (request()->query('success') == 1)
+          <div class="alert alert-success">
+              {{ request()->query('message') }}
+          </div>
+      @endif
       <form id="signupForm" action="{{ route('auth.reset-password', ['hashed_id' => request()->query('hashed_id')]) }}" method="POST">
         @csrf
         <div class="mb-3">
@@ -118,9 +123,9 @@
           hashed_id: "{{ request()->query('hashed_id') }}"
         },
         success: function(response) {
-          window.location.href = window.location.pathname + "?success=2";
-          // Optionally redirect
-          // window.location.href = '/login';
+          // sesssion flash meesage 
+
+         
         },
         error: function(xhr) {
           alert('An error occurred. Please try again.');

@@ -102,6 +102,13 @@
           <div class="alert alert-success">{{ session('success') }}</div>
       @endif
   
+      {{-- 'success' => true,
+      'message' => 'Password reset OTP has been sent to your email.', --}}
+      @if (request()->query('success') == true)
+          <div class="alert alert-success">
+              {{ request()->query('message') }}
+          </div>
+      @endif
       <form action="{{ route('password.email') }}" method="POST" id="signupForm">
           @csrf
           <div class="form-group">
