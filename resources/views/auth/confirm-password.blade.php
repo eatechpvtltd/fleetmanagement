@@ -118,7 +118,7 @@
           hashed_id: "{{ request()->query('hashed_id') }}"
         },
         success: function(response) {
-          alert('Password reset successfully!');
+          window.location.href = window.location.pathname + "?success=2";
           // Optionally redirect
           // window.location.href = '/login';
         },
