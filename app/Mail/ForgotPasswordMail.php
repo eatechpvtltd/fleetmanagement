@@ -23,7 +23,7 @@ class ForgotPasswordMail extends Mailable
                     ->view('common.forgot')
                     ->with([
                         'title' => $this->mailData['title'],
-                        'otp' => $this->mailData['otp'],
+                        'reset_link' => $this->mailData['reset_link'],
                         'user' => $this->mailData['user'],
                     ]);
     }

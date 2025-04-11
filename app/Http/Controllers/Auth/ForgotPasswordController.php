@@ -41,10 +41,14 @@ class ForgotPasswordController extends Controller
             'reset_otp_expires_at' => now()->addMinutes(15), // OTP valid for 15 minutes
         ]);
     
+       // Generate a hashed user ID
+        $hashedUserId = encrypt($user->id); // Using encryption for reversible ID
+        $resetLink = route('confirm.request', ['hashed_id' => $hashedUserId]);
+
         $mailData = [
             'title' => 'Password Reset Request',
-            'otp' => $otp,
             'user' => $user->name ?? 'User',
+            'reset_link' => $resetLink,
         ];
     
         try {
@@ -52,8 +56,6 @@ class ForgotPasswordController extends Controller
             
             // Generate a hashed user ID
             $hashedUserId = encrypt($user->id); // Combine ID with timestamp for uniqueness
-            // $hashedUserId = base64_encode($hashedUserId); // Encode to make URL-safe
-            // auth.confirm-password 
             return redirect()->route('confirm.request', [
                 'hashed_id' => $hashedUserId,
                 'success' => true,
