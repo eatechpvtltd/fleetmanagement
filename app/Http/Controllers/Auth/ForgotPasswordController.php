@@ -105,41 +105,38 @@ class ForgotPasswordController extends Controller
         // Validate the request
         $request->validate([
             'hashed_id' => 'required',
-            // 'otp' => 'required|numeric|digits:6',
-            'password' => 'required', // Ensures password matches password_confirmation
+            'password' => 'required', // You might also want to validate min:6 or confirmed
         ]);
-
-        // Decode or decrypt the hashed_id (assuming encryption was used in sendResetLink)
+    
+        // Try to decrypt hashed_id
         try {
-            $userId = decrypt($request->hashed_id); // Adjust based on how you hashed/encrypted
+            $userId = decrypt($request->hashed_id);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid or expired reset link.',
             ], 400);
         }
-
+    
         // Find the user
         $user = User::find($userId);
-
+    
         if (!$user) {
             return response()->json([
                 'success' => false,
                 'message' => 'User not found.',
             ], 404);
         }
-
+    
+        // Update password
         $user->password = Hash::make($request->password);
-        // $user->reset_otp = null;
-        // $user->reset_otp_expires_at = null;
         $user->save();
-
-        // sendResetLink 
-        redirect()->route('confirm.request', [
-            // 'hashed_id' => $request->hashed_id,
-            'success' => 2,
+    
+        // Return JSON response
+        return response()->json([
+            'success' => true,
             'message' => 'Password reset successfully. Please log in.',
         ], 200);
-
     }
+    
 }
