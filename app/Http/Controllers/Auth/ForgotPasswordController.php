@@ -100,7 +100,7 @@ class ForgotPasswordController extends Controller
     //     // Redirect to login with success message
     //     return redirect()->back()->with('success', 'Password reset successfully. Please log in.');
     // }
-    public function resetPassword(Request $request)
+    public function resetPassword(Request $request,$hashed_id)
     {
         // Validate the request
         $request->validate([
@@ -110,7 +110,7 @@ class ForgotPasswordController extends Controller
     
         // Try to decrypt hashed_id
         try {
-            $userId = decrypt($request->hashed_id);
+            $userId = decrypt($hashed_id);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -135,7 +135,7 @@ class ForgotPasswordController extends Controller
         // Return JSON response
         return response()->json([
             'success' => 2,
-            'reset_link' => route('confirm.request', ['hashed_id' => $request->hashed_id]),
+            'reset_link' => route('confirm.request', ['hashed_id' => $hashed_id]),
             'message' => 'Password reset successfully. Please log in.',
         ], 200);
     }
