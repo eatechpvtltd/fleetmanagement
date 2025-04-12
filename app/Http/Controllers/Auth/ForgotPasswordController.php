@@ -69,38 +69,7 @@ class ForgotPasswordController extends Controller
         }
     }
 
-    // public function resetPassword(Request $request)
-    // {
-    //     $request->validate([
-    //         'hashed_id' => 'required',
-    //         'password' => 'required',
-    //     ]);
-        
-    //     // Decode or decrypt the hashed_id (assuming you used encryption in sendResetLink)
-    //     try {
-    //         $userId = decrypt($request->hashed_id); 
-    //     } catch (\Exception $e) {
-    //         return back()->withErrors(['hashed_id' => 'Invalid or expired reset link.']);
-    //     }
-
-    //     // Find the user
-    //     $user = User::find($userId);
-        
-    //     if (!$user) {
-    //         return back()->withErrors(['hashed_id' => 'User not found.']);
-    //     }
-
-    //     // Update the password and clear OTP fields
-    //     $user->update([
-    //         'password' => Hash::make($request->password),
-    //         'reset_otp' => null,
-    //         'reset_otp_expires_at' => null,
-    //     ]);
-
-    //     // Redirect to login with success message
-    //     return redirect()->back()->with('success', 'Password reset successfully. Please log in.');
-    // }
-    public function resetPassword(Request $request)
+    public function resetPassword(Request $request,$hashed_id)
     {
         // Validate the request
         $request->validate([
@@ -110,7 +79,7 @@ class ForgotPasswordController extends Controller
     
         // Try to decrypt hashed_id
         try {
-            $userId = decrypt($request->hashed_id);
+            $userId = decrypt($hashed_id);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -121,10 +90,11 @@ class ForgotPasswordController extends Controller
     
         // Find the user
         $user = User::find($userId);
-    
+       
         if (!$user) {
             return response()->json([
                 'success' => false,
+                'reset_link' => route('password.request', ['message' => 'Invalid or expired reset link.']),
                 'message' => 'User not found.',
             ], 404);
         }
