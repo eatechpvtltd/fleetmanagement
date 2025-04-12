@@ -124,7 +124,13 @@
         },
         success: function(response) {
           // sesssion flash meesage 
-
+          if (response.success === 2) {
+            // Redirect to the reset link provided in response
+            window.location.href = response.reset_link;
+          } else {
+            // Optional: Handle other success cases
+            alert(response.message || 'Password reset processed.');
+          }
          
         },
         error: function(xhr) {
