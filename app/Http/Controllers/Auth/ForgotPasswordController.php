@@ -114,6 +114,7 @@ class ForgotPasswordController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
+                'reset_link' => route('password.request', ['message' => 'Invalid or expired reset link.']),
                 'message' => 'Invalid or expired reset link.',
             ], 400);
         }

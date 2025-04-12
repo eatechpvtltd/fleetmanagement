@@ -110,7 +110,7 @@
                 </p>
             </div>
             <div class="card-footer">
-                <a href="/login" class="button">Return to Login</a>
+                <a href="/" class="button">Home</a>
             </div>
         </div>
     </div>

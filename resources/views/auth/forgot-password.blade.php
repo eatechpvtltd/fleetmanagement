@@ -109,6 +109,11 @@
               {{ request()->query('message') }}
           </div>
       @endif
+      @if (request()->query('message') == true)
+          <div class="alert alert-error">
+              {{ request()->query('message') }}
+          </div>
+      @endif
       <form action="{{ route('password.email') }}" method="POST" id="signupForm">
           @csrf
           <div class="form-group">
