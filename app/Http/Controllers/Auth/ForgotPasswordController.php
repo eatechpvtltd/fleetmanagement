@@ -57,10 +57,8 @@ class ForgotPasswordController extends Controller
             
             // Generate a hashed user ID
             $hashedUserId = encrypt($user->id); // Combine ID with timestamp for uniqueness
-            return redirect()->route('password.request', [
-                'hashed_id' => $hashedUserId,
+            return redirect()->route('forgot-password-success', [
                 'success' => 2,
-                'message' => 'Password reset OTP has been sent to your email.',
             ]);
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['email' => 'Failed to send email: ' . $e->getMessage()]);
