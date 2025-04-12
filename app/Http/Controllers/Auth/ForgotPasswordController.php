@@ -134,7 +134,8 @@ class ForgotPasswordController extends Controller
     
         // Return JSON response
         return response()->json([
-            'success' => true,
+            'success' => 2,
+            'reset_link' => route('confirm.request', ['hashed_id' => $request->hashed_id]),
             'message' => 'Password reset successfully. Please log in.',
         ], 200);
     }
