@@ -84,11 +84,11 @@
               {{ request()->query('message') }}
           </div>
       @endif
-      <form id="signupForm" action="{{ route('auth.reset-password', ['hashed_id' => request()->query('hashed_id')]) }}" method="POST">
+      <form id="signupForm" action="{{ route('auth.reset-password', ['hashed_id' => $hashed_id]) }}" method="POST">
         @csrf
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="hidden" name="hashed_id" value="{{ request()->query('hashed_id') }}">
+          <input type="hidden" name="hashed_id" value="{{ $hashed_id }}">
           <input type="password" id="password" class="form-control" name="password" placeholder="Enter password" required>
         </div>
         <button type="submit" class="btn btn-login">Submit</button>
@@ -115,12 +115,12 @@
         alert('Password must be at least 6 characters long.');
       }
       $.ajax({
-        url: "{{ route('auth.reset-password', ['hashed_id' => request()->query('hashed_id')]) }}",
+        url: "{{ route('auth.reset-password', ['hashed_id' => $hashed_id]) }}",
         type: "POST",
         data: {
           _token: "{{ csrf_token() }}", // important for Laravel!
           password: password,
-          hashed_id: "{{ request()->query('hashed_id') }}"
+          hashed_id: "{{ $hashed_id }}"
         },
         success: function(response) {
           // sesssion flash meesage 
