@@ -38,5 +38,11 @@ Route::group(['prefix' => 'api'], function () {
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotForm'])->name('password.request');
 Route::post('/forgot-password-post', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
+Route::get('/forgot-password-success', function () {
+    return view('common.success-pw-mail');
+})->name('password.mail.success');
 Route::get('/confirm-password/{hashed_id}', [ForgotPasswordController::class, 'showConfirmForm'])->name('confirm.request');
 Route::post('/reset-password/{hashed_id}', [ForgotPasswordController::class, 'resetPassword'])->name('auth.reset-password');
+Route::get('/password-changed-success', function () {
+    return view('common.password-changed-success');
+})->name('password-changed-success');

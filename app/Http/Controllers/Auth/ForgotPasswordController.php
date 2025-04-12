@@ -59,14 +59,15 @@ class ForgotPasswordController extends Controller
             $hashedUserId = encrypt($user->id); // Combine ID with timestamp for uniqueness
             return redirect()->route('password.request', [
                 'hashed_id' => $hashedUserId,
-                'success' => true,
+                'success' => 2,
                 'message' => 'Password reset OTP has been sent to your email.',
             ]);
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to send email: ' . $e->getMessage(),
-            ], 500);
+            return redirect()->back()->withErrors(['email' => 'Failed to send email: ' . $e->getMessage()]);
+            // return response()->json([
+            //     'success' => false,
+            //     'message' => 'Failed to send email: ' . $e->getMessage(),
+            // ], 500);
         }
     }
 
@@ -136,7 +137,7 @@ class ForgotPasswordController extends Controller
         // Return JSON response
         return response()->json([
             'success' => 2,
-            'reset_link' => route('confirm.request', ['hashed_id' => $request->hashed_id,'success' => 2]),
+            'reset_link' => route('password-changed-success', ['success' => 2]),
             'message' => 'Password reset successfully. Please log in.',
         ], 200);
     }
