@@ -1,8 +1,15 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
-use App\Http\Controllers\API\DashboardDataController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\SitesController;
+use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\API\DashboardDataController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', function () {
@@ -10,9 +17,24 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'api'], function () {
-    Route::get('/drivers', DashboardDataController::class . '@index');
+    Route::get('/drivers', function (){
+        try {
+            $drivers = \App\Models\Driver::all();
+            return response()->json([
+                'success' => true,
+                'message' => 'Drivers retrieved successfully',
+                'data' => $drivers
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to retrieve drivers: ' . $e->getMessage(),
+                'data' => []
+            ], 500);
+        }
+    });
     Route::post('/login', [AuthController::class, 'login']);
-   
+
     Route::post('vehicle-count', function () {
         // Static data for vehicle status counts
         $vehicleCounts = [
@@ -21,7 +43,7 @@ Route::group(['prefix' => 'api'], function () {
             'not_reachable' => 5,
             'all' => 25, // or you could do running + idle + not_reachable
         ];
-    
+
         return response()->json([
             'success' => true,
             'data' => $vehicleCounts
@@ -60,7 +82,6 @@ Route::group(['prefix' => 'api'], function () {
             ], 500);
         }
     });
-
 });
 
 
@@ -74,3 +95,26 @@ Route::post('/reset-password/{hashed_id}', [ForgotPasswordController::class, 're
 Route::get('/password-changed-success', function () {
     return view('common.password-changed-success');
 })->name('password-changed-success');
+
+
+
+
+Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/adminproduct', [AdminController::class, 'products']);
+Route::post('/AddNewVehicle', [AdminController::class, 'AddNewVehicle']);
+Route::post('/UpdateProduct', [AdminController::class, 'UpdateProduct']);
+Route::get('/deleteProduct/{id}', [AdminController::class, 'deleteProduct']);
+Route::get('/adminvehicle', [AdminController::class, 'vehicle']);
+
+
+Route::post('/AddNewOrg', [VehicleController::class, 'Organization']);
+
+
+Route::get('/Organization', [OrganizationController::class, 'index']);
+Route::get('/Vehicle', [VehicleController::class, 'index']);
+Route::get('/Group', [GroupController::class, 'index']);
+Route::get('/Sites', [SitesController::class, 'index']);
+Route::get('/Device', [DeviceController::class, 'index']);
+
+
+Route::get('trip-report', [UserController::class, 'allTripReport'])->name('trip-report');
