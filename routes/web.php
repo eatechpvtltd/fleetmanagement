@@ -13,15 +13,43 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/drivers', DashboardDataController::class . '@index');
     Route::post('/login', [AuthController::class, 'login']);
    
+    Route::post('vehicle-count', function () {
+        // Static data for vehicle status counts
+        $vehicleCounts = [
+            'running' => 12,
+            'idle' => 8,
+            'not_reachable' => 5,
+            'all' => 25, // or you could do running + idle + not_reachable
+        ];
+    
+        return response()->json([
+            'success' => true,
+            'data' => $vehicleCounts
+        ]);
+    });
     Route::get('/vehicles', function () {
-        return \App\Models\Vehicle::all();
+        // return \App\Models\Vehicle::all();
+        try {
+            $sites = \App\Models\Vehicle::all();
+            return response()->json([
+                'success' => true,
+                'message' => 'Vehicles retrieved successfully',
+                'data' => $sites
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to retrieve sites: ' . $e->getMessage(),
+                'data' => []
+            ], 500);
+        }
     });
     Route::get('/sites', function () {
         try {
             $sites = \App\Models\Site::all();
             return response()->json([
                 'success' => true,
-                'message' => 'Drivers retrieved successfully',
+                'message' => 'Sites retrieved successfully',
                 'data' => $sites
             ], 200);
         } catch (\Exception $e) {
