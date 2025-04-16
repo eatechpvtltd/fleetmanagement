@@ -41,5 +41,6 @@ Route::get('sites', [SitesController::class, 'index']);
 Route::get('device', [DeviceController::class, 'index']);
 
 
+
 Route::get('trip-report', [UserController::class, 'allTripReport'])->name('trip-report');
 
