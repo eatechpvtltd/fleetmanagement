@@ -16,7 +16,7 @@
                                             <div class="mb-3">
                                                 <label for="group" class="form-label">Group</label>
                                                 <select id="group" name="group" class="form-select form-control" required>
-                                                    <option value="">select</option>
+                                                    {{-- <option value="">select</option> --}}
                                                     <option value="GT-BHUBANESWARI-PO">GT-BHUBANESWARI-PO</option>
                                                     <option value="GT-JHARSUGUDA-PO">GT-JHARSUGUDA-PO</option>
                                                 </select>
@@ -24,7 +24,7 @@
                                             <div class="mb-3">
                                                 <label for="vehicle" class="form-label">Vehicle</label>
                                                 <select id="vehicle" name="vehicle" class="form-select form-control" required>
-                                                    <option value="">select</option>
+                                                    {{-- <option value="">select</option> --}}
                                                     <option value="4150058701">OR-19-F-6477 MAY-25 (4150058701)</option>
                                                     <option value="4150058702">OR-19-F-6478 MAY-25 (4150058702)</option>
                                                     <option value="4150058703">OR-20-G-1234 MAY-25 (4150058703)</option>

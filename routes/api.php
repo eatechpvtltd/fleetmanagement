@@ -17,7 +17,7 @@ Route::post('login', [UserController::class, 'login']);
 // });
 
 Route::get('drivers', [UserController::class, 'driver']);
-Route::get('vehicle-count', [UserController::class, 'vehicleCount']);
+Route::post('vehicle-count', [UserController::class, 'vehicleCount']);
 Route::get('vehicles', [UserController::class, 'vehicle']);
 Route::get('sites', [UserController::class, 'site']);
-Route::get('trip-summary', [UserController::class, 'getTripSummary']);
+Route::post('trip-summary', [UserController::class, 'getTripSummary']);
