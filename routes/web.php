@@ -7,7 +7,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\SitesController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\VehicleController;
-use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
