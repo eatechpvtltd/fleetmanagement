@@ -48,8 +48,8 @@
                             <table class="table table-striped table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>GROUP Name</th>
-                                        <th>Organization ID</th>
+                                        <th>Organization</th>
+                                        <th>Group Name</th>
                                         <th>Description</th>
                                     </tr>
                                 </thead>

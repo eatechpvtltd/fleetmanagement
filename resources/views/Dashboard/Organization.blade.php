@@ -7,11 +7,12 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-        
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Add New
-                        </button>
+                        <div class="text-right mb-3">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Add New <i data-feather="plus" class="icon-sm"></i>
+                            </button>
+                        </div>
 
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -24,30 +25,29 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                       <form action="{{ URL::to('AddNewOrg') }}" method="POST" enctype="multipart/form-data">
-
+                                        <form action="{{ URL::to('new-organization') }}" method="POST"
+                                            enctype="multipart/form-data">
                                             @csrf
-                                    
+
                                             <label for="">Name</label>
                                             <input type="text" name="name" placeholder="Enter name"
                                                 class="form-control mb-2" id="">
-                                            <label for="">Logo</label>
-                                            <input type="file" name="logo" placeholder="Enter logo"
-                                                class="form-control mb-2" id="">
-                                            <label for="">ADDRESS</label>
+                                            <label for="">Address</label>
                                             <input type="text" name="address" placeholder="Enter address"
                                                 class="form-control mb-2" id="">
                                             <label for="">phone</label>
                                             <input type="number" name="phone" class="form-control mb-2"
                                                 id="">
-                                            <label for="">EMAIL</label>
+                                            <label for="">Email</label>
                                             <input type="email" name="email" placeholder="Enter email"
                                                 class="form-control mb-2" id="">
-                                                <label for="">TIMEZONE</label>
+                                            <label for="">Timezone</label>
                                             <input type="text" name="timezone" placeholder="Enter timezone"
                                                 class="form-control mb-2" id="">
-                                            <input type="submit" name="save" value="save Now"
-                                                class="btn btn-success">
+                                            <label for="">Logo</label>
+                                            <input type="file" name="file" value="logo" placeholder="Enter logo"
+                                                class="form-control mb-2" id="">
+                                            <input type="submit" name="save" value="Submit" class="btn btn-success">
                                         </form>
                                     </div>
 
@@ -59,37 +59,43 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>LOGO</th>
-                                        <th>ADDRESS</th>
-                                        <th>PHONE</th>
-                                        <th>EMAIL</th>
-                                         <th>TIMEZONE</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Timezone</th>
+                                        <th>Logo</th>
+                                        <th>Action</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                         $i = 0;
                                     @endphp
-                                    {{-- @foreach ($products as $items)
+                                    @foreach ($organization as $items)
                                         @php
                                             $i++;
                                         @endphp
                                         <tr>
-                                            <td>{{ $items->title }}</td>
-                                            <td><img src="{{ url('Uploads/profiles/products/' . $items->picture) }}"
-                                                    width="100px"></td>
-                                            <td>{{ $items->price }}</td>
-                                            <td>{{ $items->quantity }}</td>
-                                            <td>{{ $items->category }}</td>
+                                            <td>{{ $items->name }}</td>
+
+                                            <td>{{ $items->address }}</td>
+                                            <td>{{ $items->phone }}</td>
+                                            <td>{{ $items->email }}</td>
                                             <td class="font-weight-medium">
-                                                <div class="">{{ $items->type }}</div>
+                                                <div class="">{{ $items->timezone }}
+
+                                                </div>
                                             </td>
+                                            <td><img src="{{ url('Uploads/profiles/vehicles/' . $items->logo) }}"
+                                                    width="100px"></td>
                                             <td class="font-weight-medium">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                     data-target="#updateModal{{ $i }}">
-                                                    Update
+                                                    <i data-feather="edit" class="icon-sm"></i>
                                                 </button>
-
+                                                <a href="{{ url('delete-organization/' . $items->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                                                    <i data-feather="trash" class="icon-sm"></i></a>
                                                 <div class="modal fade" id="updateModal{{ $i }}"
                                                     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
@@ -97,14 +103,14 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">UPDATE
-                                                                    PRODUCTS</h5>
+                                                                </h5>
                                                                 <button type="button" class="close"
                                                                     data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{ URL::to('UpdateProduct') }}"
+                                                                <form action="{{ URL::to('update-organization') }}"
                                                                     method="POST" enctype="multipart/form-data">
                                                                     @csrf
                                                                     <label for="">ID</label>
@@ -112,50 +118,32 @@
                                                                         value="{{ $items->id }}"
                                                                         placeholder="Enter id"
                                                                         class="form-control mb-2" id="">
-                                                                    <label for="">Title</label>
-                                                                    <input type="text" name="title"
-                                                                        value="{{ $items->title }}"
-                                                                        placeholder="Enter Title"
+                                                                    <label for="">name</label>
+                                                                    <input type="text" name="name"
+                                                                        value="{{ $items->name }}"
+                                                                        placeholder="Enter name"
                                                                         class="form-control mb-2" id="">
-                                                                    <label for="">Price</label>
-                                                                    <input type="text" name="price"
-                                                                        value="{{ $items->price }}"
-                                                                        placeholder="Enter Price"
+                                                                    <label for="">Address</label>
+                                                                    <input type="text" name="address"
+                                                                        value="{{ $items->address }}"
+                                                                        placeholder="Enter Address"
                                                                         class="form-control mb-2" id="">
 
-                                                                    <label for="">Quantity</label>
-                                                                    <input type="number" name="quantity"
-                                                                        value="{{ $items->quantity }}"
-                                                                        placeholder="Enter Quantity"
+                                                                    <label for="">Phone</label>
+                                                                    <input type="number" name="phone"
+                                                                        value="{{ $items->phone }}"
+                                                                        placeholder="Enter Phone"
                                                                         class="form-control mb-2" id="">
-                                                                    <label for="">Picture</label>
-                                                                    <input type="file" name="file"
+                                                                    <label for="">email</label>
+                                                                    <input type="email" name="email"
+                                                                        class="form-control mb-2" id=""
+                                                                        value="{{ $items->email }}">
+                                                                    <label for="">Timezone</label>
+                                                                    <input type="text" name="timezone"
+                                                                        value="{{ $items->timezone }}"
+                                                                        placeholder="Enter Timezone"
                                                                         class="form-control mb-2" id="">
-                                                                    <label for="">Description</label>
-                                                                    <input type="text" name="description"
-                                                                        value="{{ $items->description }}"
-                                                                        placeholder="Enter Description"
-                                                                        class="form-control mb-2" id="">
-                                                                    <label for="">Category</label>
-                                                                    <select name="category" clas="form-control mb-2"
-                                                                        id="">
-                                                                        <option value="{{ $items->category }}">
-                                                                            {{ $items->category }}</option>
-                                                                        <option value="accessories">Accessories
-                                                                        </option>
-                                                                        <option value="shoe">shoes</option>
-                                                                        <option value="clothe">clothes</option>
-                                                                    </select>
-                                                                    <select name="type" clas="form-control mb-2"
-                                                                        id="">
-                                                                        <option value="{{ $items->type }}">
-                                                                            {{ $items->type }}</option>
-                                                                        <option value="Best Sellers">Best Sellers
-                                                                        </option>
-                                                                        <option value="new-arrivals">New-Arrivals
-                                                                        </option>
-                                                                        <option value="sale">sale</option>
-                                                                    </select>
+
                                                                     <input type="submit" name="save"
                                                                         value="save changes" class="btn btn-success">
                                                                 </form>
@@ -165,12 +153,8 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <a href="{{ URL::to('deleteProduct/' . $items->id) }}"
-                                                    class="btn btn-danger">DELETE</a>
-                                            </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
 
                             </table>
@@ -179,4 +163,4 @@
                 </div>
             </div>
 
-@include ('components.adminfooter')
+            @include ('components.adminfooter')

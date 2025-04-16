@@ -51,11 +51,12 @@
                             <table class="table table-striped table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>Organization ID</th>
+                                        <th>SI. No.</th>
+                                        <th>Organization</th>
                                         <th>Installation Date</th>
                                         <th>Status</th>
                                         <th>Vehicle ID</th>
-                                        <th>SI_no</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>

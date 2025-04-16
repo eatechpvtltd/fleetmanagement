@@ -53,11 +53,11 @@
                             <table class="table table-striped table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>LICENSE PLATE</th>
-                                        <th>Organization ID</th>
-                                        <th>DRIVER</th>
-                                        <th>MODEL</th>
-                                        <th>YEAR</th>
+                                        <th>Licence Plate</th>
+                                        <th>Organization</th>
+                                        <th>Driver</th>
+                                        <th>Model</th>
+                                        <th>Year</th>
                     
                                     </tr>
                                 </thead>
