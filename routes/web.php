@@ -30,10 +30,11 @@ Route::get('password-changed-success', function () {
 
 
 
-Route::get('admin/login', [AdminController::class, 'login']);
-Route::get('admin', [AdminController::class, 'index']);
+Route::get('login', [AdminController::class, 'login'])->name('login');
+Route::get('forgot-password', [AdminController::class, 'forgotPassword'])->name('forgot.password');
+Route::get('admin', [AdminController::class, 'index'])->name('admin');
 
-Route::get('organization', [OrganizationController::class, 'index']);
+Route::get('organization', [OrganizationController::class, 'index'])->name('organization');
 Route::get('vehicle', [VehicleController::class, 'index']);
 Route::get('group', [GroupController::class, 'index']);
 Route::get('sites', [SitesController::class, 'index']);

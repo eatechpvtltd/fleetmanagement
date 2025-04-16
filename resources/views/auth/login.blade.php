@@ -26,7 +26,7 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo">
+              <div class="brand-logo d-flex justify-contant-center">
                 <img src="{{ asset('images/logo.png') }}" class="mx-auto" alt="logo">
               </div>
               <h4>Hello! let's get started</h4>
@@ -48,7 +48,7 @@
                       Keep me signed in
                     </label> --}}
                   </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
+                  <a href="{{ route('forgot.password') }}" class="auth-link text-black">Forgot password?</a>
                 </div>
                 {{-- <div class="mb-2">
                   <button type="button" class="btn btn-block btn-facebook auth-form-btn">
