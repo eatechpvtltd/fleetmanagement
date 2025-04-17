@@ -7,16 +7,15 @@
                 <div class="card" style="background-color: #F5F7FF !important;">
                     <div class="card-body">
                         <div class="row g-4">
-                            <!-- Left Side: Form -->
                             <div class="col-md-4">
                                 <div class="card shadow bg-white">
                                     <div class="card-body">
-                                        <h4 class="card-title text-center mb-4">New Trip Summary(Site) Report</h4>
+                                        <h4 class="card-title text-center mb-4">New Trip Summary (Site) Report</h4>
                                         <form id="tripForm">
                                             <div class="mb-3">
                                                 <label for="group" class="form-label">Group</label>
                                                 <select id="group" name="group" class="form-select form-control" required>
-                                                    {{-- <option value="">select</option> --}}
+                                                    <option value="">select</option>
                                                     <option value="GT-BHUBANESWARI-PO">GT-BHUBANESWARI-PO</option>
                                                     <option value="GT-JHARSUGUDA-PO">GT-JHARSUGUDA-PO</option>
                                                 </select>
@@ -24,7 +23,7 @@
                                             <div class="mb-3">
                                                 <label for="vehicle" class="form-label">Vehicle</label>
                                                 <select id="vehicle" name="vehicle" class="form-select form-control" required>
-                                                    {{-- <option value="">select</option> --}}
+                                                    <option value="">select</option>
                                                     <option value="4150058701">OR-19-F-6477 MAY-25 (4150058701)</option>
                                                     <option value="4150058702">OR-19-F-6478 MAY-25 (4150058702)</option>
                                                     <option value="4150058703">OR-20-G-1234 MAY-25 (4150058703)</option>

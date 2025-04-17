@@ -80,7 +80,7 @@
                 <div class="col-md-6 stretch-card transparent">
                   <div class="card card-light-danger">
                     <div class="card-body">
-                      <p class="mb-4">Total sites</p>
+                      <p class="mb-4">Total Sites</p>
                       <p class="fs-30 mb-2">47033</p>
                       <p>0.22% (30 days)</p>
                     </div>

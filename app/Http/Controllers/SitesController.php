@@ -8,6 +8,6 @@ class SitesController extends Controller
 {
     public function index()
     {
-    return view('Dashboard.Sites');
-}
+        return view('Dashboard.Sites');
+    }
 }

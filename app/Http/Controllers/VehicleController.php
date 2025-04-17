@@ -15,19 +15,19 @@ class VehicleController extends Controller
     }
 
     // Add new vehicle
-//     public function AddNEWVEHICLE(Request $request)
-//     {
-//         $vehicle = new Vehicle();
+    // public function AddNEWVEHICLE(Request $request)
+    // {
+    //         $vehicle = new Vehicle();
 
-//         $vehicle->addvehicle = $request->input('addvehicle');
-//         $vehicle->adddriver = $request->input('adddriver');
-//         $vehicle->site = $request->input('site');
-//         $vehicle->group = $request->input('group');
-//         $vehicle->assignvalue = $request->input('assignvalue');
+    //         $vehicle->addvehicle = $request->input('addvehicle');
+    //         $vehicle->adddriver = $request->input('adddriver');
+    //         $vehicle->site = $request->input('site');
+    //         $vehicle->group = $request->input('group');
+    //         $vehicle->assignvalue = $request->input('assignvalue');
 
-//         $vehicle->save();
+    //         $vehicle->save();
 
-//         return redirect()->back()->with('success', 'Vehicle added successfully!');
-//     }
-// }
+    //         return redirect()->back()->with('success', 'Vehicle added successfully!');
+    //     
+    // }
 }
