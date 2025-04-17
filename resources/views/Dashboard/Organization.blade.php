@@ -29,28 +29,52 @@
                                             enctype="multipart/form-data">
                                             @csrf
 
-                                            <label for="">Name</label>
-                                            <input type="text" name="name" placeholder="Enter name"
-                                                class="form-control mb-2" id="">
-                                            <label for="">Address</label>
-                                            <input type="text" name="address" placeholder="Enter address"
-                                                class="form-control mb-2" id="">
-                                            <label for="">phone</label>
-                                            <input type="number" name="phone" class="form-control mb-2"
-                                                id="">
-                                            <label for="">Email</label>
-                                            <input type="email" name="email" placeholder="Enter email"
-                                                class="form-control mb-2" id="">
-                                            <label for="">Timezone</label>
-                                            <input type="text" name="timezone" placeholder="Enter timezone"
-                                                class="form-control mb-2" id="">
-                                            <label for="">Logo</label>
-                                            <input type="file" name="file" value="logo" placeholder="Enter logo"
-                                                class="form-control mb-2" id="">
-                                            <input type="submit" name="save" value="Submit" class="btn btn-success">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="orgName">Name</label>
+                                                    <input type="text" name="name" class="form-control"
+                                                        id="orgName" placeholder="Enter name">
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="orgAddress">Address</label>
+                                                    <input type="text" name="address" class="form-control"
+                                                        id="orgAddress" placeholder="Enter address">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="orgPhone">Phone</label>
+                                                    <input type="number" name="phone" class="form-control"
+                                                        id="orgPhone" placeholder="Enter phone">
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="orgEmail">Email</label>
+                                                    <input type="email" name="email" class="form-control"
+                                                        id="orgEmail" placeholder="Enter email">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="orgTimezone">Timezone</label>
+                                                    <input type="text" name="timezone" class="form-control"
+                                                        id="orgTimezone" placeholder="Enter timezone">
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="orgLogo">Logo</label>
+                                                    <input type="file" name="file"
+                                                        class="form-control form-control-file" id="orgLogo">
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" name="save"
+                                                class="btn btn-success">Submit</button>
                                         </form>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -94,7 +118,8 @@
                                                     data-target="#updateModal{{ $i }}">
                                                     <i data-feather="edit" class="icon-sm"></i>
                                                 </button>
-                                                <a href="{{ url('delete-organization/' . $items->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                                                <a href="{{ url('delete-organization/' . $items->id) }}"
+                                                    class="btn btn-danger" onclick="return confirm('Are you sure?')">
                                                     <i data-feather="trash" class="icon-sm"></i></a>
                                                 <div class="modal fade" id="updateModal{{ $i }}"
                                                     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -110,43 +135,42 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{ URL::to('update-organization') }}"
-                                                                    method="POST" enctype="multipart/form-data">
+                                                                <form action="{{ URL::to('update-organization') }}" method="POST" enctype="multipart/form-data">
                                                                     @csrf
-                                                                    <label for="">ID</label>
-                                                                    <input type="number" name="id"
-                                                                        value="{{ $items->id }}"
-                                                                        placeholder="Enter id"
-                                                                        class="form-control mb-2" id="">
-                                                                    <label for="">name</label>
-                                                                    <input type="text" name="name"
-                                                                        value="{{ $items->name }}"
-                                                                        placeholder="Enter name"
-                                                                        class="form-control mb-2" id="">
-                                                                    <label for="">Address</label>
-                                                                    <input type="text" name="address"
-                                                                        value="{{ $items->address }}"
-                                                                        placeholder="Enter Address"
-                                                                        class="form-control mb-2" id="">
-
-                                                                    <label for="">Phone</label>
-                                                                    <input type="number" name="phone"
-                                                                        value="{{ $items->phone }}"
-                                                                        placeholder="Enter Phone"
-                                                                        class="form-control mb-2" id="">
-                                                                    <label for="">email</label>
-                                                                    <input type="email" name="email"
-                                                                        class="form-control mb-2" id=""
-                                                                        value="{{ $items->email }}">
-                                                                    <label for="">Timezone</label>
-                                                                    <input type="text" name="timezone"
-                                                                        value="{{ $items->timezone }}"
-                                                                        placeholder="Enter Timezone"
-                                                                        class="form-control mb-2" id="">
-
-                                                                    <input type="submit" name="save"
-                                                                        value="save changes" class="btn btn-success">
+                                                                    <input type="hidden" name="id" value="{{ $items->id }}">
+                                                                
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="orgName">Name</label>
+                                                                            <input type="text" name="name" id="orgName" class="form-control" placeholder="Enter name" value="{{ $items->name }}">
+                                                                        </div>
+                                                                
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="orgAddress">Address</label>
+                                                                            <input type="text" name="address" id="orgAddress" class="form-control" placeholder="Enter address" value="{{ $items->address }}">
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="orgPhone">Phone</label>
+                                                                            <input type="number" name="phone" id="orgPhone" class="form-control" placeholder="Enter phone" value="{{ $items->phone }}">
+                                                                        </div>
+                                                                
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="orgEmail">Email</label>
+                                                                            <input type="email" name="email" id="orgEmail" class="form-control" placeholder="Enter email" value="{{ $items->email }}">
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label for="orgTimezone">Timezone</label>
+                                                                        <input type="text" name="timezone" id="orgTimezone" class="form-control" placeholder="Enter timezone" value="{{ $items->timezone }}">
+                                                                    </div>
+                                                                
+                                                                    <button type="submit" class="btn btn-success">Save Changes</button>
                                                                 </form>
+                                                                
                                                             </div>
 
                                                         </div>

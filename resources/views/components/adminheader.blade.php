@@ -19,6 +19,8 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="Dashboard/css/vertical-layout-light/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <!-- endinject -->
     <link rel="shortcut icon" href="/images/dashboard/favicon.jpg" />
     <script src="https://unpkg.com/feather-icons"></script>
@@ -421,7 +423,6 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-
                     @php
                         $sidebarMenu = [
                             [
@@ -431,32 +432,32 @@
                             ],
                             [
                                 'url' => 'organization',
-                                'icon' => 'icon-layout menu-icon',
+                                'icon' => 'fas fa-building menu-icon',
                                 'title' => 'ORGANIZATION',
                             ],
                             [
                                 'url' => 'group',
-                                'icon' => 'icon-layout menu-icon',
+                                'icon' => 'fas fa-users menu-icon',
                                 'title' => 'GROUP',
                             ],
                             [
                                 'url' => 'vehicle',
-                                'icon' => 'icon-layout menu-icon',
+                                'icon' => 'fas fa-truck menu-icon',
                                 'title' => 'VEHICLE',
                             ],
                             [
                                 'url' => 'sites',
-                                'icon' => 'icon-head menu-icon',
+                                'icon' => 'fas fa-globe menu-icon',
                                 'title' => 'SITES',
                             ],
                             [
                                 'url' => 'device',
-                                'icon' => 'icon-head menu-icon',
+                                'icon' => 'fas fa-compass menu-icon',
                                 'title' => 'GPS DEVICE',
                             ],
                             [
                                 'url' => 'trip-report',
-                                'icon' => 'icon-head menu-icon',
+                                'icon' => 'fas fa-file-alt menu-icon',
                                 'title' => 'Report',
                             ],
                         ];
