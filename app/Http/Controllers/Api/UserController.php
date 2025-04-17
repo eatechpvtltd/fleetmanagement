@@ -30,7 +30,7 @@ class UserController extends Controller
     {
        try {
         $stateVehicleCount = [
-            ["Odisha" => 7],
+            ["Orissa" => 7],
         ];
             return response()->json([
                 'success' => true,
