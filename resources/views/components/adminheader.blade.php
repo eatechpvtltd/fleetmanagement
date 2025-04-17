@@ -25,25 +25,113 @@
     <style>
         footer {
             position: fixed;
-            height: 100px;
+            height: 50px;
             bottom: 0;
             width: 100%;
         }
+
         .icon-sm {
             width: 16px;
             height: 16px;
+        }
+
+        .sidebar {
+            background-color: #0f0f0f;
+            /* Black background */
+            color: #fff;
+            /* White text */
+        }
+
+        .sidebar .nav-link {
+            color: #fff !important;
+        }
+
+        .sidebar .nav-link:hover {
+            color: #ccc !important;
+        }
+
+        .sidebar .menu-icon {
+            color: #fff;
+        }
+
+        .card {
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+        }
+
+        .navbar {
+            background-color: #007bff !important;
+            color: white !important;
+        }
+
+        .navbar .nav-link {
+            color: white !important;
+        }
+
+        .navbar .navbar-brand {
+            color: white !important;
+        }
+
+        .navbar .navbar-toggler-icon {
+            background-color: white !important;
+            /* White toggle icon */
+        }
+
+        .navbar .navbar-menu-wrapper {
+            background: #248afd;
+            color: white;
+        }
+
+        .sidebar .nav .nav-item.active>.nav-link {
+            background: #248afd;
+            position: relative;
+        }
+
+        .sidebar .nav.sub-menu {
+            margin-bottom: 0;
+            margin-top: 0;
+            list-style: none;
+            padding: 0.25rem 0 0 3.07rem;
+            background: #248afd;
+            padding-bottom: 12px;
+        }
+
+        .sidebar .nav:not(.sub-menu)>.nav-item>.nav-link[aria-expanded="true"] {
+            border-radius: 8px 8px 0 0;
+            background: #248afd;
+        }
+
+        .sidebar .nav:not(.sub-menu)>.nav-item:hover>.nav-link,
+        .sidebar .nav:not(.sub-menu)>.nav-item:hover[aria-expanded="true"] {
+            background: #248afd;
+            color: #fff;
+        }
+
+        .navbar .navbar-brand-wrapper {
+            background: #0f0f0f;
+        }
+
+        .navbar {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .sidebar .nav .nav-item .nav-link i.menu-icon {
+            color: #ffffff;
+        }
+        .sidebar-icon-only .navbar .navbar-brand-wrapper .navbar-brand img {
+            height: auto;
+        }
+        .navbar .navbar-brand-wrapper .navbar-brand img {
+            height: 58px;
         }
     </style>
 </head>
 
 <body>
     <div class="container-scroller">
-        <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                {{-- <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="Dashboard/images/logo.svg" class="mr-2" alt="logo"/></a> --}}
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="Dashboard/images/logo-mini.svg"
-                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href=""><img src="images/logo-sidebar-img.png"  class="m-auto w-100 img-fluid rounded" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini rounded" href=""><img src="images/logo-sidebar-img.png"  alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -145,7 +233,7 @@
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
             <div class="theme-setting-wrapper">
-                <div id="settings-trigger"><i class="ti-settings"></i></div>
+                {{-- <div id="settings-trigger"><i class="ti-settings"></i></div> --}}
                 <div id="theme-settings" class="settings-panel">
                     <i class="settings-close ti-close"></i>
                     <p class="settings-heading">SIDEBAR SKINS</p>

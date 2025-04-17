@@ -22,3 +22,4 @@ Route::get('vehicles', [UserController::class, 'vehicle']);
 Route::get('live-location', [UserController::class, 'liveLocation']);
 Route::post('trip-summary', [UserController::class, 'getTripSummary']);
 Route::get('state-vehicle-count', [UserController::class, 'stateCount']);
+Route::get('vehicles', [UserController::class, 'stateCount']);

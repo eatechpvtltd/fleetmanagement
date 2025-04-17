@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
-                <div class="card" style="background-color: #F5F7FF !important;">
+                <div class="card" style="background-color: #F5F7FF !important;box-shadow:none !important;">
                     <div class="card-body">
                         <div class="row g-4">
                             <div class="col-md-4">
