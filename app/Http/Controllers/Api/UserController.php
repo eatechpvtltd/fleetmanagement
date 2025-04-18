@@ -143,6 +143,8 @@ class UserController extends Controller
             $sites = [ 
                 [
                     "id" => 1,
+                    "itemName" => "V5_1505",
+                    "trackedItemID" => 6609,
                     "vehicle_number" => "OD02CD3456",
                     "group_name" => "Delivery",
                     "timestamp" => "2025-04-15 11:00:00",
@@ -163,10 +165,15 @@ class UserController extends Controller
                     "movement" => true,
                     "driver_name" => "Rajeev Das",
                     "driver_mobile_number" => "9876543210",
-                    "postal_code" => "753014"
+                    "postal_code" => "753014",
+                    "din2" => "N/A",
+                    "din3" => "N/A",
+                    "greenDrivingType" => "N/A"
                 ],
                 [
                     "id" => 2,
+                    "itemName" => "V5_1510",
+                    "trackedItemID" => 6610,
                     "vehicle_number" => "OD33XY1234",
                     "group_name" => "Logistics",
                     "timestamp" => "2025-04-15 10:45:00",
@@ -187,10 +194,15 @@ class UserController extends Controller
                     "movement" => true,
                     "driver_name" => "Suresh Nayak",
                     "driver_mobile_number" => "9876543211",
-                    "postal_code" => "751024"
+                    "postal_code" => "751024",
+                    "din2" => "Normal",
+                    "din3" => "Off",
+                    "greenDrivingType" => "Safe"
                 ],
                 [
                     "id" => 3,
+                    "itemName" => "V5_1511",
+                    "trackedItemID" => 6611,
                     "vehicle_number" => "OD05EF6789",
                     "group_name" => "Fleet Services",
                     "timestamp" => "2025-04-15 09:50:00",
@@ -211,10 +223,15 @@ class UserController extends Controller
                     "movement" => false,
                     "driver_name" => "Prakash Meher",
                     "driver_mobile_number" => "9876543212",
-                    "postal_code" => "769012"
+                    "postal_code" => "769012",
+                    "din2" => "Low",
+                    "din3" => "On",
+                    "greenDrivingType" => "Idle"
                 ],
                 [
                     "id" => 4,
+                    "itemName" => "V5_1512",
+                    "trackedItemID" => 6612,
                     "vehicle_number" => "OD17GH9876",
                     "group_name" => "Mining",
                     "timestamp" => "2025-04-15 11:20:00",
@@ -235,10 +252,15 @@ class UserController extends Controller
                     "movement" => true,
                     "driver_name" => "Bikash Sahu",
                     "driver_mobile_number" => "9876543213",
-                    "postal_code" => "759122"
+                    "postal_code" => "759122",
+                    "din2" => "Normal",
+                    "din3" => "Off",
+                    "greenDrivingType" => "Eco"
                 ],
                 [
                     "id" => 5,
+                    "itemName" => "V5_1513",
+                    "trackedItemID" => 6613,
                     "vehicle_number" => "OD19JK1122",
                     "group_name" => "Cargo",
                     "timestamp" => "2025-04-15 12:05:00",
@@ -259,10 +281,15 @@ class UserController extends Controller
                     "movement" => true,
                     "driver_name" => "Deepak Patra",
                     "driver_mobile_number" => "9876543214",
-                    "postal_code" => "760005"
+                    "postal_code" => "760005",
+                    "din2" => "High",
+                    "din3" => "On",
+                    "greenDrivingType" => "Aggressive"
                 ],
                 [
                     "id" => 6,
+                    "itemName" => "V5_1514",
+                    "trackedItemID" => 6614,
                     "vehicle_number" => "OD22KL9988",
                     "group_name" => "Agriculture",
                     "timestamp" => "2025-04-15 12:15:00",
@@ -283,10 +310,15 @@ class UserController extends Controller
                     "movement" => true,
                     "driver_name" => "Niranjan Behera",
                     "driver_mobile_number" => "9876543215",
-                    "postal_code" => "768004"
+                    "postal_code" => "768004",
+                    "din2" => "Normal",
+                    "din3" => "Off",
+                    "greenDrivingType" => "Eco"
                 ],
                 [
                     "id" => 7,
+                    "itemName" => "V5_1515",
+                    "trackedItemID" => 6615,
                     "vehicle_number" => "OD13MN4567",
                     "group_name" => "Industrial Supply",
                     "timestamp" => "2025-04-15 12:30:00",
@@ -307,9 +339,13 @@ class UserController extends Controller
                     "movement" => true,
                     "driver_name" => "Arjun Panda",
                     "driver_mobile_number" => "9876543216",
-                    "postal_code" => "768203"
+                    "postal_code" => "768203",
+                    "din2" => "Normal",
+                    "din3" => "Off",
+                    "greenDrivingType" => "Safe"
                 ]
             ];
+            
             
             
             return response()->json([
